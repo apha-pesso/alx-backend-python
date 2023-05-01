@@ -18,7 +18,8 @@ class TestGithubOrgClient(unittest.TestCase):
 
         get_json_patch.return_value = expected
 
-        self.assertEqual(test_org.org, expected)
+        # self.assertEqual(test_org.org, expected)
+        self.assertEqual(test_org.org, get_json_patch.return_value)
         get_json_patch.assert_called_once
 
         # expected = requests.get(url).json()
