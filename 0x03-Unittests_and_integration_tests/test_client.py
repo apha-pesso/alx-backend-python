@@ -11,12 +11,12 @@ class TestGithubOrgClient(unittest.TestCase):
     @parameterized.expand([
         ('google', {"payload": True}),
         ('abc', {"payload": True})])
-    @patch('client.get_json')
+    @patch('client.get_json', return_value={"payload": True})
     def test_org(self, url_ext, expected, get_json_patch):
         test_org = GithubOrgClient(url_ext)
         url = f"https://api.github.com/orgs/{url_ext}"
 
-        get_json_patch.return_value = expected
+        # get_json_patch.return_value = expected
 
         # self.assertEqual(test_org.org, expected)
         self.assertEqual(test_org.org, get_json_patch.return_value)
