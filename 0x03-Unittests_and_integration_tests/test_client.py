@@ -13,6 +13,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ('abc', {"payload": True})])
     @patch('client.get_json', return_value={"payload": True})
     def test_org(self, url_ext, expected, get_json_patch):
+        '''Test method'''
         test_org = GithubOrgClient(url_ext)
         url = f"https://api.github.com/orgs/{url_ext}"
 
